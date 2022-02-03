@@ -1,0 +1,1085 @@
+<!--
+Version 03.00.01
+
+This file is a document type definition subset for defining the
+structure of Service Information for Construction Equipment. 
+
+
+Update log:
+ 
+  Date             Comment                                         Sign
+
+  1995-06-24    Version 01 of VCESI created                        MSD-3JN
+  1996-09-23    Version 02 of VCESI created                        MSD-3JN
+	
+	notation for tiff, cgm changed from public to system
+	notation for sgml added
+	latin 2 caracter entity set added
+	information type insp-prog added
+	information type timeguide added
+	information type partsinfo added
+	information type inst-instr added
+	information type scheme-hydraulic added
+	information type scheme-gasfluid changed to scheme-pneumatic
+	attribute height added to symbol
+	attribute lang, language codes added
+	attribute oldbltnnumbr removed
+	attribute revisionnbr added to bltn-geninfo
+	attribute product added to bltn-geninfo
+	attribute distrarea added to bltn-geninfo
+	attrubute change and id added to subtitle
+	attribute methodsteps in element S1-S5 changed to time, attribute
+	label removed
+	attribute spectype  changed
+	attribute tgroupstyle added to tgroup
+	element title removed from within procedure
+	element extxref modified to use TEI links
+	element toolref modified to use TEI links
+	element operxref removed
+	element eqn removed
+	element tol removed
+	content model of list element changed, warning, caution and note is 
+	now allowed between the item element
+	entity pcontent created
+	marked section %base removed
+	marked section %equation removed
+	element figure, figureref added to spec element
+	parameter entitys usage, graphstyle, captionstyle, has been removed
+	element entrytbl removed
+
+
+1997-02-10
+	parameter entity textref removed
+	element textref removed
+	element toolref and extxref, declared content changed from ANY to PCDATA
+	marked section %total removed
+	element deflist and list, attribute compact changed to space with qualifing
+	attributes compact and nocompact where compact is default
+
+1997-03-06 
+	figurref added to parameter entity refdat
+	default value for align attribute on element graphelem 
+	changed from left to center
+	element list changed, figure possible between item
+	element spec changed, subtitle is now possible within element
+	element procspeq is now optional within procedure
+
+1997-06-26
+	element caption within graphelem changed from optional to required
+	attribute opnbr in procedure changed from CDATA   to CDATA  
+	attribute servcatnbr for element servcatype changeed from CDATA   to 
+	NMTOKEN. Attribute value of f for preface and s for safety.
+
+98-08-19        
+	Content model for ftnote and tftnote changed
+	Attribute update added to servinfo
+	Entity %lang added to elements servinfo, servifosub.
+	Attribute impsize added to element graphic
+	Notation for JPEG added
+99-02-16
+	Attribute model added to elements servinfo, servinfosub.
+	Attribute resolution added to element graphic.
+	Elements symbol, figure added to content model of entry element 
+	figure replaces graphic.
+	Element tableref added to %refdat.
+	Attribute figno added to elements caption to handle 
+	figure numbering in PROSIS.
+	Attribute impsize and resolution added to element symbol.
+	Default value for attribute align on graphelem is changed from center to left.
+	Values BR, EE, IS, PL, RU, SL, TR, YU, AB, IR added to lang attribute.
+	Entity FMfgrp for handling of functiongroup names in FrameMaker added.
+	Attribute type for Intxref changed to required from implied.
+	Default value for attribute enumtype on list element changed from implied to numbered.
+99-05-26
+	Attribute toolref changed to IDREF
+	Content model for element PROCTOOL changed
+99-11-02
+	Contentmodel for element Figure changed
+	
+99-12-16
+	Entity %head added.
+	Elements for bulletin head added.
+	Element distarea added.
+	Element product added.
+	Element fugrp added.
+	Element bltnno added.
+	Element issuer added.
+	Element revisno added.
+	Element bltnyr added.
+	Element bltnmo added.
+	Element regard added.
+	Element supersedes added.
+	Element kitno added.
+	Element date added.
+	Element refno added.
+	Element dept added.
+	Element bltn-geninfo replaces element %bltn-qual.
+	Entity bltn-qual removed.
+	Element job removed.
+	Element operref removed.
+	Entity %spec-qual removed.
+	Element procedure and procedurref added to entity tcontent.
+	Content model for servinfo and servinfosub changed
+
+00-02-29
+	Attributes product, issuer, replaces added to element bltn-geninfo
+	Attribute fugrp added to element bltn-geninfo
+	Content model for sepcialequip changed
+	
+00-03-10
+	Entity fugrp disabled, usage of this not finally determined
+	
+	
+00-03-26
+	Elements note, caution, warning created.
+	Element (%attention;) removed because exclusion of these created 
+	problems in Frame Maker when using %attention in list element.
+	
+	Content model for entry changed to include graphic instead of figure.
+	Element intro-partinfo created.
+00-05-19
+	Language code for arabian changed
+	
+00-05-29
+	Attribute type for element inxref changed
+	Attribute tgroupstyle changed for element tgroup
+	Element ftnoteref
+	
+00-06-05
+	Attribute ID added to element tgroup
+	
+00-06-27
+	Element figure is now part of content model for ENTRY
+	The element will not be used in FM
+	
+00-11-27
+	New company shortnames added to attribute ISSUER for BLTN-GENINFO
+	
+01-02-27
+	New company shortnames (GRD) added to attribute ISSUER for BLTN-GENINFO 
+	
+01-09-28 
+	Version 03.00.02 created
+	New element config added
+	
+01-11-13 
+	Version 03.00.03 created
+	Content model for PROCEDURE changed.
+	New values for attribute tgroupstyle added.
+01-11-19
+	Version 03.00.04 created
+	Inclusion of %refdat in element emph removed.
+	Content model for proctool changed.
+01-12-10
+	Version 03.00.04 created
+	New value "sbhead" for attribute tgroupstyle added.
+	Corrected Config elem, no end tag is required.
+
+03-06-12
+      XML DTD vcesi03xml created with version 03.00.01                     LD   
+      In earlier SGML versions element 'tftnote was an inclusion
+      to element 'entry'. As inclusions are not allowed in XML,
+      the element 'tftnote' is now put as part of %chardat. 
+  
+03-06-18
+	Language code 'KR' added
+	Changes to element bltn-geninfo:
+      - Value list of attribute 'issuer' extended with ...BHL|KOR|SSL|THL|CST
+	- Attribute 'report' added
+      Content model of proctool extended to include toolnbr and toolname
+
+03-07-15
+	Additions for installation instructions					LD
+	- New attributes for element inst-instr added: optionno, fugrp, time
+	- New elements in %head added: optionno, issuer, time
+
+03-12-15									
+	Language code 'CH' changed to 'CN'
+
+
+04-01-09
+      - Content model for element 'emph' is extended to allow references (%refdat).
+      - Content model for element 'item' is extended to allow element 'tftnote'.
+        The purpose is to solve a compatibility problem with the SGML DTD vcesi03:
+           The SGML DTD has an inclusion of tftnote in the 'entry' element, which 
+           makes it possible to use tftnote anywhere within 'entry'. 
+           This problem is partly solved earlier (see comment at 03-06-12) and this
+           change will further improve the solution.
+04-01-14
+      
+      - Content model for element 'entry' is extended to allow element 'tftnote'
+
+08-03-11
+		- Changed attributes from REQUIRED to IMPLIED for servcatype, servcat2, servcat3, servcat4 elements. 
+
+08-04-30
+		- Changed pgwide attribute from REQUIRED to 0 for figure element. 
+		- Changed tgroupstyle default attr to lines
+		- added new attribure 'counter' default 0 in subtitle element.
+		- added new attr-value 'linessmallfont' for tgroupstyle.
+
+08-06-23
+    - Added new element 'models' as child of 'regard' element.
+    
+10-01-28
+    - Added missing language ID (Indonesian) in entity langcode.
+
+10-08-19
+    - Added linkid attribute to procedure tag. This attribute is only used internally in the system.
+
+10-10-18
+    - Changed attention (warning/danger/caution) format to also allow new attention structure 
+      containing source/consequence/precaution tags. Old ptxt-format is still available for penta and backwards compatability.
+
+10-10-25
+    - Added language XY (VCE Proof english) in entity langcode.
+
+10-10-01
+    - Changed order of source/consequence/precaution tags in attentions.
+
+10-11-12
+    - Added edition and langname attributes to inst-instr tag. These attributes are used for easier data access by some styles.
+
+11-03-17
+	- Added possiblity of using phrasereference and saecodereference to sub and super tags.
+	- Allowed zero or one pagebreaks in procedure element.
+
+11-03-21
+	- Added support for loxref
+	- Synchronized servcont, pcontent, content, tcontent, and dcontent entity definition with editing dtd.
+	- Added danger to tags allowed in figure tags.
+	- Added reftxt tag to allowed tags in the note, warning and caution element.
+	- Added possibility to use phrasereference and saecodereference in sub/super tags.
+	
+12-01-31
+  - Added support for admonition the same way as for warning, caution and danger.
+  
+12-03-19
+  - Added new possible value of bltntype in attribute list bltn-geninfo (SpecialCommitment). 
+  
+UpTime AllAddIn 2.15.0
+12-08-13
+  - Added list as possible child element to source, precaution and consequence.  
+
+UpTime AllAddIn 2.16.0
+13-02-04
+  - Added possiblity of using dtcreference to sub and super tags and in generic chardat.
+	
+UpTime AllAddIn 2.18.0
+13-08-13
+  - Added possiblity of using ntreference and ftbreference to sub and super tags and in generic chardat.
+	
+Usage:
+
+    This file must be included in a DOCTYPE statement before it can be parsed.
+
+  VCESInn
+  =======
+    To create a DTD for creation of service information elements as well as
+    all required qualifying information, append the following statement to
+    the beginning of the file:
+    
+       <!DOCTYPE vcesi [   
+
+       and the associated "]>" to the end of the file.
+
+  Example of an XML document instance:
+
+     <!DOCTYPE vcesi PUBLIC "-//Volvo Construction Equipment//DTD VCESInn//EN" 
+                            "\path\vcesinn.dtd" 
+     [
+     ..... entity declarations .....
+     ] >
+     <vcesi>
+     .... 
+     </vcesi>
+
+    Where nn is the version no of the DTD
+    
+ 
+
+-->			 <!-- GENERAL ENTITY DECLARATIONS -->
+
+
+<!ENTITY % intro-qual    "intro-gensafety | intro-geninfo | intro-traininfo | intro-partinfo" > 
+			  <!-- general safety information, general information,
+			  training information  and part information-->
+
+
+<!ENTITY % diag-qual     "diag-gentest | diag-tcodeaproc | diag-sympproc" > 
+			   <!-- general diagnostics and tests; diagnostic trouble codes
+			     and associated procs; symptom related diagnostic procs  -->
+
+<!ENTITY % repair-qual   "repair-rmvrplinstl | repair-overhaul | repair-cia" > 
+			   <!-- Removal, replacement and installation; overhaul and 
+			     repair; cleaning, inspection and adjustment  -->
+
+
+<!ENTITY % schem-qual    "schem-electric | schem-pneumatic |  schem-hydraulic" > 
+			   <!-- electrical/electronic specifications; gas, vacuum and fluids schematic diagrams -->
+
+
+<!--<!ENTITY % incref   "IDREF" >  External/internal inclusion (ENTITY/IDREF) -->
+
+
+<!ENTITY % langcode "AX | AL | DZ | AS | AD | AO | AI | AQ | AG | AR | AM | AW | AU | AT | AZ | BS | BH | BD | BB | BY
+	| BE | BZ | BJ | BM | BT | BO | BA | BW | BV | BR | IO | BN | BG | BF | BI | KH | CM | CA | CV | KY | CF | TD | CL
+	 | CN | CX | CC | CO | KM | CG | CD | CK | CR | CI | HR | CU | CY | CZ | DK | DJ | DM | DO | EC | EG | SV | GQ | ER
+	  | EE | ET | FK | FO | FJ | FI | FR | GF | PF | TF | GA | GM | GE | DE | GH | GI | GR | GL | GD | GP | GU | GT | GG
+	   | GN | GW | GY | HT | HM | VA | HN | HK | HU | IS | IN | IR | IQ | ID | IE | IM | IL | IT | JM | JP | JE | JO | KZ
+	    | KE | KI | KP | KR | KW | KG | LA | LV | LB | LS | LR | LY | LI | LT | LU | MO | MK | MG | MW | MY | MV | ML | MT
+	     | MH | MQ | MR | MU | YT | MX | FM | MD | MC | MN | ME | MS | MA | MZ | MM | NA | NR | NP | NL | AN | NC | NZ | NI
+	      | NE | NG | NU | NF | MP | NO | OM | PK | PW | PS | PA | PG | PY | PE | PH | PN | PL | PT | PR | QA | RE | RO | RU
+	       | RW | BL | SH | KN | LC | MF | PM | VC | WS | SM | ST | SA | SN | RS | SC | SL | SG | SK | SI | SB | SO | ZA | GS
+	        | ES | LK | SD | SR | SJ | SZ | SE | CH | SY | TW | TJ | TZ | TH | TL | TG | TK | TO | TT | TN | TR | TM | TC | TV
+		        | UG | UA | AE | GB | US | UM | UY | UZ | VU | VE | VN | VG | VI | WF | EH | XY | YE | ZM | ZW" >
+                                                  <!-- Country (language) codes ISO 3166-1981 Alpha 2 code-->
+					  
+<!ENTITY % refs     "id CDATA #IMPLIED" >            <!-- Link anchor point -->
+
+<!ENTITY % vcesi    "vcesi" >                     <!-- Root tag -->
+
+       
+		         <!-- ENTITY DECLARATIONS FOR SIE:S -->
+
+<!ENTITY % admonition "note | admonition | warning | caution | danger" >
+
+<!ENTITY % chardat  "emph | sub | super | symbol | ftnote | tftnote |br | phrasereference | saecodereference | toolreference | dtcreference | ntreference | ftbreference" >
+                    				<!--  Tag tftnote is moved to %chardat. 
+								In vcesi03 (sgml) it was an inclusion tag for 'entry' (LD, June-03)-->
+
+<!ENTITY % refdat   "loxref | extxref | intxref | toolref | figureref | tableref | ftnoteref" >
+
+<!ENTITY % servcont "((startleft|pagebreak)?,(para | list | deflist | table | tableref
+		       | spec | figure | figureref | %admonition; | s1))" >
+
+<!ENTITY % tcontent "((startleft|pagebreak)?,(para | list | deflist | table | tableref | spec | figure 
+		       | figureref | %admonition; | procedure | procedureref))" >
+
+<!ENTITY % content   "((startleft|pagebreak)?,(ptxt | list | deflist | table | tableref 
+		       | figure | figureref | %admonition; | specval | specref))" >
+
+<!ENTITY % lcontent  "ptxt | reftxt | deflist | table | tableref | %admonition;" >
+
+<!ENTITY % dcontent  "ptxt | loxref | reftxt | extxref | %admonition;" >
+
+<!ENTITY % pcontent  "((startleft|pagebreak)?,(para | reftxt | list | deflist | table | figure | %admonition;)) " >
+
+<!ENTITY % figcontent  "ptxt | reftxt | list | deflist | table | tableref | specref | toolref" >
+
+<!ENTITY % etype     'etype (bold | boldital | ital | underscore) "bold"' >
+
+<!ENTITY % yesorno   "(0 | 1)" >
+
+<!ENTITY % opdat.el  "(proctool, procspeq?)" >
+
+<!ENTITY % head     "distarea | product | fugrp | bltnno | revisno | bltnyr | bltnmo 
+			| regard | kitno | date | refno | dept | optionno | issuer | time" >
+
+
+			  <!-- ISO entity sets used -->
+
+<!ENTITY % ISOlat1  PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN" 
+                           "iso-lat1.utf8ent" >
+<!ENTITY % ISOlat2  PUBLIC "ISO 8879:1986//ENTITIES Added Latin 2//EN" 
+                           "iso-lat2.utf8ent" >
+<!ENTITY % ISOpub   PUBLIC "ISO 8879:1986//ENTITIES Publishing//EN"
+                           "iso-pub.utf8ent" >
+<!ENTITY % ISOgrk3  PUBLIC "ISO 8879:1986//ENTITIES Greek Symbols//EN" 
+                           "iso-grk3.utf8ent" >
+<!ENTITY % ISOnum   PUBLIC "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN" 
+                           "iso-num.utf8ent" >
+<!ENTITY % ISOtech  PUBLIC "ISO 8879:1986//ENTITIES General Technical//EN" 
+                           "iso-tech.utf8ent" >
+
+
+			 <!-- Notation declarations -->
+
+<!NOTATION XREF SYSTEM "">
+<!NOTATION TIFF SYSTEM ""> 
+<!NOTATION CGM  SYSTEM ""> 
+<!NOTATION BMP  SYSTEM ""> 
+<!NOTATION WMF  SYSTEM "">
+<!NOTATION GIF  SYSTEM "">
+<!NOTATION JPG  SYSTEM "">
+<!NOTATION PNG  SYSTEM "">
+<!NOTATION SVG  SYSTEM "">
+<!NOTATION SGML PUBLIC "+//ISO 8879:1986//NOTATION STANDARD GENERALIZED MARKUP LANGUAGE//EN">
+<!NOTATION XML  SYSTEM "">
+
+			 <!-- Invoke ISO entity declarations -->
+%ISOlat1;
+%ISOpub;
+%ISOgrk3;
+%ISOnum;
+%ISOtech;
+%ISOlat2;
+
+                   <!-- ELEMENT DECLARATIONS -->
+
+<!ELEMENT vcesi    (entitypool?, (product-specific | not-product-specific)?) >
+
+<!ATTLIST vcesi    lang      (%langcode;)  #IMPLIED >        <!-- Default language -->
+
+<!ELEMENT entitypool ( servinfo | servinfosub | topic | table | figure | procedure )+ >
+
+
+		       <!-- BEGIN QUALIFYING ELEMENT DECLARATIONS -->
+
+<!ELEMENT product-specific (config*, subsetlist?,  (servcatype | servinfotype )+) >
+
+<!ELEMENT not-product-specific (servinfotype)+ >
+
+<!ELEMENT config    EMPTY>
+
+<!ATTLIST config    prodline   CDATA     #IMPLIED
+                    model      CDATA     #REQUIRED
+                    version    CDATA     #REQUIRED 
+                    brand      CDATA     #REQUIRED >
+
+<!ELEMENT subsetlist (subsetgroup)+ >
+
+<!ELEMENT subsetgroup (title, subset+) >
+
+<!ATTLIST subsetgroup id      ID         #REQUIRED     
+		      ssgrpnbr    CDATA      #REQUIRED  
+		      ssgrpcomp   CDATA      #REQUIRED > <!-- subset specification -->
+
+<!ELEMENT subset  (title, custadapt*, market*, engine?, elsupply?,
+			 transmission?, brake?, steering?, chassie?,
+			 cab?, superstructure?, misc?) >
+
+<!ATTLIST subset  id            ID       #REQUIRED          
+		      ssnbr         CDATA    #REQUIRED       
+		      ssgrpcomp     CDATA    #REQUIRED 
+		      prodtype      CDATA    #REQUIRED       
+		      version       CDATA    #IMPLIED       
+		      serialnostart CDATA    #IMPLIED     
+		      serialnoend   CDATA    #IMPLIED      
+		      factory       CDATA    #IMPLIED             
+		      model         CDATA    #IMPLIED >        
+
+<!ELEMENT engine   (title, variant*, component*, ssinfo*) >        
+<!ELEMENT elsupply (title, variant*, component*, ssinfo*) >
+<!ELEMENT transmission (title, variant*, component*, ssinfo*) >
+<!ELEMENT brake    (title, variant*, component*, ssinfo*) > 
+<!ELEMENT steering (title, variant*, component*, ssinfo*) >
+<!ELEMENT chassie  (title, variant*, component*, ssinfo*) >
+<!ELEMENT cab      (title, variant*, component*, ssinfo*) >
+<!ELEMENT superstructure (title, variant*, component*, ssinfo*) >
+<!ELEMENT misc     (title, variant*, component*, ssinfo*) >
+ 
+			<!-- Function group:       J2008 configs:
+
+			   Engine         2      enginemotor
+			   Elsupply       3      
+			   Transmission   4      transtaxle
+			   Brake          5      brake
+			   Steering       6 (64) steering
+					  61,65  suspension
+			   Chassie        7      drive
+			   Cab            8      body
+			   Superstructure 9 
+			   Misc                  misc       -->
+
+<!ELEMENT market    (#PCDATA) >                    <!-- Market area -->
+<!ATTLIST market     areaid      CDATA      #REQUIRED > 
+
+<!ELEMENT variant   (#PCDATA) >            <!-- Variant description -->
+<!ATTLIST variant    varfamily   CDATA      #REQUIRED 
+		         varnbr      CDATA      #REQUIRED 
+		         varsymbol   CDATA      #REQUIRED >
+
+<!ELEMENT custadapt  (#PCDATA) >
+<!ATTLIST custadapt  canbr       NMTOKEN    #REQUIRED > <!-- Customer adaptation --> 
+
+<!ELEMENT component  (#PCDATA) >
+
+<!ATTLIST component   compnbr     CDATA      #REQUIRED 
+		      comptype       (ecu|dataset|other) #IMPLIED
+         	      company         CDATA      #IMPLIED 
+		      servcatnbr      CDATA      #IMPLIED
+		      servcatcomp     CDATA  #IMPLIED
+		      serialstart     NMTOKEN    #IMPLIED
+		      serialend       NMTOKEN    #IMPLIED >
+
+<!ELEMENT ssinfo  (sstext+)>                          <!-- subset information -->
+<!ATTLIST ssinfo  ssinfotype      NMTOKEN    #REQUIRED
+		      ssinfofunc      NMTOKEN    #IMPLIED
+		      servcatnbr      CDATA       #IMPLIED 
+		      servcatcomp     CDATA  #IMPLIED >
+
+<!ELEMENT sstext  (#PCDATA) >
+
+<!ELEMENT servcatype (title, (servinfotype | servcat2)+)> <!-- 1-digit function group -->
+
+<!ATTLIST servcatype servcatnbr   NMTOKEN   #IMPLIED > 
+	                      <!-- function group number, P for preface or S for safety-->
+
+<!ELEMENT servcat2 (title, (servinfotype | servcat3)*) > <!-- 2-digit function group -->
+<!ATTLIST servcat2 servcatnbr     CDATA     #IMPLIED 
+		       servcatcomp      CDATA   #IMPLIED >
+
+<!ELEMENT servcat3 (title,(servinfotype | servcat4)*) > <!-- 3-digit function group -->
+<!ATTLIST servcat3 servcatnbr  CDATA        #IMPLIED 
+		       servcatcomp CDATA        #IMPLIED >
+
+<!ELEMENT servcat4 (title,(servinfotype)+) >            <!-- 4-digit function group -->
+<!ATTLIST servcat4 servcatnbr  CDATA        #IMPLIED 
+                   servcatcomp CDATA        #IMPLIED >
+
+<!ELEMENT servinfotype (%intro-qual; | visid | descrip| comploc 
+			     | bltn-geninfo | %diag-qual; | maint | insp-prog 
+			     | %repair-qual; | spec-other | %schem-qual;
+			     | timeguide | tools | operate | partsinfo | inst-instr 
+			     | serv-prog | arrive-del-insp | deliv-instruct | maint-stored )+ >
+
+<!ELEMENT repair-rmvrplinstl (servinfo|servinforef)+ >
+<!ELEMENT repair-overhaul    (servinfo|servinforef)+ >
+<!ELEMENT repair-cia         (servinfo|servinforef)+ >
+<!ELEMENT diag-gentest       (servinfo|servinforef)+ >
+<!ELEMENT diag-tcodeaproc    (servinfo|servinforef)+ >
+<!ELEMENT diag-sympproc      (servinfo|servinforef)+ >
+<!ELEMENT intro-gensafety    (servinfo|servinforef)+ >
+<!ELEMENT intro-geninfo      (servinfo|servinforef)+ >
+<!ELEMENT intro-traininfo    (servinfo|servinforef)+ >
+<!ELEMENT intro-partinfo     (servinfo|servinforef)+ >
+<!ELEMENT visid              (servinfo|servinforef)+ >           
+<!ELEMENT descrip            (servinfo|servinforef)+ >
+<!ELEMENT comploc            (servinfo|servinforef)+ >           
+<!ELEMENT maint              (servinfo|servinforef)+ >
+<!ELEMENT insp-prog          (servinfo|servinforef)+ >
+<!ELEMENT spec-other         (servinfo|servinforef)+ >
+<!ELEMENT schem-electric     (servinfo|servinforef)+ >
+<!ELEMENT schem-pneumatic    (servinfo|servinforef)+ >
+<!ELEMENT schem-hydraulic    (servinfo|servinforef)+ >
+<!ELEMENT timeguide          (servinfo|servinforef)+ >
+<!ELEMENT tools              (servinfo|servinforef)+ >
+<!ELEMENT operate            (servinfo|servinforef)+ >
+
+<!ELEMENT serv-prog          (servinfo|servinforef)+ >
+<!ATTLIST serv-prog refno   	CDATA		#REQUIRED
+		releasedate     CDATA		#IMPLIED 
+		id         	ID             	#IMPLIED >
+
+<!ELEMENT arrive-del-insp    (servinfo|servinforef)+ >
+<!ATTLIST arrive-del-insp refno CDATA		#REQUIRED
+		releasedate     CDATA		#IMPLIED 
+		id		ID             	#IMPLIED >
+
+<!ELEMENT deliv-instruct     (servinfo|servinforef)+ >
+<!ATTLIST deliv-instruct refno   CDATA		#REQUIRED
+		releasedate      CDATA		#IMPLIED 
+		id         	 ID            	#IMPLIED >
+
+<!ELEMENT maint-stored       (servinfo|servinforef)+ >
+<!ATTLIST maint-stored refno   CDATA		#REQUIRED
+		releasedate    CDATA		#IMPLIED 
+		id             ID             	#IMPLIED >
+
+
+<!ELEMENT bltn-geninfo       (table,supersedes?,(servinfo|servinforef)+) >
+
+<!ATTLIST bltn-geninfo bltntype  (Classified|Confidential|General|SpecialCommitment)  "General"
+		  bltnnumbr     CDATA                	#IMPLIED
+		  bltnyr        CDATA                	#IMPLIED 
+		  bltnmo        CDATA                	#IMPLIED 
+		  bltnday       CDATA                 #IMPLIED
+		  distrarea     NMTOKEN               #IMPLIED
+		  revisionnbr   CDATA                	#IMPLIED
+		  product       CDATA                 #IMPLIED
+		  issuer   	    CDATA	                #IMPLIED
+		  replaces	    CDATA 		          	#IMPLIED
+		  fugrp	    NMTOKEN	                	#IMPLIED
+		  report	    CDATA	                	#IMPLIED >
+                            <!-- bltntype: F and K marking on VCE bulletins -->
+
+<!ELEMENT inst-instr         (table,(servinfo | servinforef)+)>
+
+<!ATTLIST inst-instr refno   CDATA                     #REQUIRED                        
+			kitno      CDATA				 #REQUIRED
+			optionno   CDATA		 		 #REQUIRED
+			fugrp	     CDATA				 #REQUIRED
+			time	     CDATA				 #IMPLIED
+			date       CDATA                     #REQUIRED
+			issuer     CDATA                     #REQUIRED
+			product    CDATA                     #REQUIRED
+			id         ID                        #IMPLIED
+      edition    CDATA        #REQUIRED
+      langname   CDATA        #REQUIRED>
+
+<!ELEMENT partsinfo    		(table,(servinfo | servinforef)+)>
+
+<!ATTLIST partsinfo receiver CDATA                   #IMPLIED                        
+			date       CDATA                    #IMPLIED
+			regno      CDATA                   #IMPLIED
+			flap       CDATA                    #IMPLIED
+			issuer     CDATA                   #IMPLIED
+			dept       NMTOKENS                #IMPLIED
+			distr      CDATA                   #IMPLIED
+			type       (newparts|
+					catammend|
+					replacement|
+					misc)                   #IMPLIED
+			concerning  CDATA                   #IMPLIED
+			pubno       CDATA                   #IMPLIED
+			issue       CDATA                   #IMPLIED
+			id          ID                      #IMPLIED >
+
+
+
+
+
+			<!--  BEGIN SERVICE INFORMATION ELEMENT (SIE) ELEMENTS  -->
+
+<!ELEMENT servinfo ( title,  
+			 ( (servinfosub|servinfosubref)+
+		  	 | (topic|topicref)+ 
+			 | (startleft|pagebreak|subtitle|(%tcontent;))*)) >
+
+<!ATTLIST servinfo change   %yesorno; #IMPLIED
+			lang      (%langcode;) #IMPLIED 
+			update    CDATA     #IMPLIED
+			model     CDATA     #IMPLIED  
+			pagination   (none|foldout|newpage|newleftpage) "none"
+			%refs;    >
+
+<!ELEMENT servinfosub ((startleft|pagebreak)?, title,
+			  ( (topic|topicref)+ 
+			  | ((startleft|pagebreak)?, subtitle?, (%tcontent;))*)) >
+
+<!ATTLIST servinfosub       change    %yesorno; #IMPLIED
+			lang      (%langcode;) #IMPLIED 
+			update    CDATA     #IMPLIED
+			model     CDATA     #IMPLIED
+			%refs;    >
+
+<!ELEMENT topic   ((startleft|pagebreak)?, title, subtitle*, ((startleft|pagebreak)?, (%tcontent;))+) >
+<!ATTLIST topic   change    %yesorno; #IMPLIED
+		       %refs;    >
+
+<!ELEMENT procedure (title?, (%opdat.el;)*,  
+                    (procedure+ | (subtitle? | (%pcontent;)* | s1 | pagebreak?)+)) >
+
+<!ATTLIST procedure opnbr   CDATA      #IMPLIED 
+		       change   CDATA      #IMPLIED
+           linkid   CDATA      #IMPLIED
+		       %refs; >
+
+<!ELEMENT s1       ((startleft|pagebreak)?, title?, (stext | (s2)+ )) >
+
+<!ATTLIST s1       time     CDATA      #IMPLIED
+		       change   %yesorno;  #IMPLIED
+		       %refs; >
+		       
+<!ELEMENT s2       ((startleft|pagebreak)?, title?, (stext | (s3)+ )) >
+
+<!ATTLIST s2       time      CDATA     #IMPLIED
+		       change    %yesorno; #IMPLIED
+		       %refs; > 
+
+<!ELEMENT s3       ((startleft|pagebreak)?, title?, (stext | (s4)+ )) >
+
+<!ATTLIST s3       time      CDATA     #IMPLIED
+		       change    %yesorno; #IMPLIED
+		       %refs; >
+
+<!ELEMENT s4       ((startleft|pagebreak)?, title?, (stext | (s5)+ )) >
+
+<!ATTLIST s4       time      CDATA     #IMPLIED
+		       change    %yesorno; #IMPLIED
+		       %refs; >
+
+<!ELEMENT s5      ((startleft|pagebreak)?, title?, stext) >
+
+<!ATTLIST s5       time      CDATA     #IMPLIED
+		       change    %yesorno; #IMPLIED
+		       %refs; >
+
+<!ELEMENT stext    (%content;)+ >
+
+<!ELEMENT proctool ((toolref|loxref|extxref|emph|toolreference)* |(toolnbr, toolname)*) >
+
+<!ATTLIST proctool  %refs; >
+
+<!ELEMENT phrasereference (#PCDATA)>
+<!ATTLIST phrasereference
+	%refs;>
+
+<!ELEMENT dtcreference (#PCDATA)>
+<!ATTLIST dtcreference
+	%refs;>
+  
+<!ELEMENT ftbreference (#PCDATA)>
+<!ATTLIST ftbreference
+	%refs;>
+  
+<!ELEMENT ntreference (#PCDATA)>
+<!ATTLIST ntreference
+	%refs;> 
+<!ELEMENT saecodereference (saetype, saenumber, saename)>
+<!ATTLIST saecodereference
+	%refs;>
+<!ELEMENT saetype	 (#PCDATA) >
+<!ELEMENT saenumber	 (#PCDATA) >
+<!ELEMENT saename	 (#PCDATA) >
+
+<!ELEMENT toolreference	(toolnbr, toolname)>
+<!ATTLIST toolreference
+	%refs;>
+
+<!ELEMENT toolnbr	 (#PCDATA) >
+
+<!ELEMENT toolname (#PCDATA) >
+
+<!ELEMENT procspeq  (specequip)* > <!-- Special equipment-->
+
+<!ATTLIST procspeq  %refs; >
+
+<!ELEMENT figtext   (%figcontent;)* >
+
+<!ELEMENT figure    (title?, graphelem,  ( startleft | pagebreak | note | admonition | warning | caution | danger | figtext)*) >
+
+<!ATTLIST figure    pgwide   %yesorno;  "0"
+				rotate (0 | 90 | 270) "0"
+			  change   CDATA      #IMPLIED
+			  %refs; >
+
+<!ELEMENT graphelem (graphic, caption) >
+ 
+<!ATTLIST graphelem align    (left|center|right)     "left"
+			  change   %yesorno;               #IMPLIED>
+
+<!ELEMENT graphic   EMPTY >
+<!ATTLIST graphic   graphicname    ENTITY         #REQUIRED
+			idlbl           (yes|no)        "yes"
+			width           CDATA           #IMPLIED 
+			height          CDATA           #IMPLIED
+			change          %yesorno;       #IMPLIED
+			impsize         CDATA           #IMPLIED
+			resolution      CDATA           #IMPLIED
+			notation	CDATA		#IMPLIED
+			%refs; >
+
+<!ELEMENT caption (#PCDATA|%chardat;)* >
+
+<!ATTLIST caption	change	    CDATA           #IMPLIED 
+          		figno           CDATA           #IMPLIED >
+
+<!ELEMENT title   (#PCDATA|%chardat;)* > 
+ 
+<!ELEMENT subtitle (#PCDATA|%chardat;)* >
+
+<!ATTLIST subtitle change   	  %yesorno;		 #IMPLIED
+			 counter   	  %yesorno;		 "0"
+			%refs;  >
+
+<!ELEMENT para    (title?, (ptxt | reftxt)+) >
+
+<!ATTLIST para    change  	  %yesorno; 	 #IMPLIED  
+			%refs; >
+
+<!ELEMENT reftxt    (%chardat;|%refdat;)* >
+
+<!ATTLIST reftxt    change  	  %yesorno;		 #IMPLIED  >
+
+<!ELEMENT ptxt    (#PCDATA|%chardat;|%refdat;)* >
+
+<!ATTLIST ptxt    change  	  %yesorno;		 #IMPLIED  >
+
+<!ELEMENT note    (ptxt | reftxt | list)+ >
+
+<!ATTLIST note    change 	   %yesorno;	 #IMPLIED 
+ 
+			%refs; >
+
+<!ELEMENT source  ((ptxt | list)+) >
+
+<!ELEMENT precaution  ((ptxt | list)+) >
+
+<!ELEMENT consequence ((ptxt | list)+) >
+
+<!ELEMENT admonition ((ptxt | reftxt | list)+ | (source, consequence, precaution)) >
+
+<!ATTLIST admonition change 	   %yesorno;	 #IMPLIED
+      type       CDATA       #IMPLIED
+			%refs; >
+			
+<!ELEMENT warning ((ptxt | reftxt | list)+ | (source, consequence, precaution)) >
+
+<!ATTLIST warning change 	   %yesorno;	 #IMPLIED  
+			%refs; >
+
+<!ELEMENT danger ((ptxt | reftxt | list)+ | (source, consequence, precaution)) >
+
+<!ATTLIST danger change 	   %yesorno;	 #IMPLIED
+			lang      (%langcode;) #IMPLIED
+%refs; >
+
+<!ELEMENT caution ((ptxt | reftxt | list)+ | (source, consequence, precaution)) >
+
+<!ATTLIST caution change  	  %yesorno;		 #IMPLIED  
+		  	%refs; >
+			
+<!ELEMENT spec    (startleft?,pagebreak?,(para | list | table | specval | figure | figureref | subtitle)+) >
+
+<!ATTLIST spec    spectype 	( General
+					| Weights
+					| Capacities
+				    	| Tighteningtorques
+					| Dimensions )	 #IMPLIED 
+			change	%yesorno;		 #IMPLIED  
+			%refs; >
+
+<!ELEMENT specval (#PCDATA|%chardat;)* >
+
+<!ELEMENT specref EMPTY >
+<!ATTLIST specref servcatnbr	CDATA    		#IMPLIED 
+		      servcatcomp	CDATA  		#IMPLIED
+		      ssref 	IDREF   		#REQUIRED 
+		      spectype    CDATA   		#IMPLIED
+		      %refs; >
+
+<!ELEMENT list    (title?, symbol*, 
+			(item | %admonition; | figure), 
+			((symbol*,(item|(%admonition; | figure | pagebreak))) | list)*) >
+
+<!ATTLIST list    enumtype	(bulleted
+					|unlabeled
+					|dash
+					|numbered
+					|loweralpha
+					|upperalpha)	"numbered"
+		      space 	(compact
+					|nocompact)		"compact"
+		      change    %yesorno;          	#IMPLIED
+		      %refs; >
+
+<!ELEMENT item    (%lcontent;|tftnote)+ >       <!-- See change dated 04-01-09 -->
+<!ATTLIST item    change    %yesorno; #IMPLIED  
+		      %refs; >
+
+<!ELEMENT deflist (term, def)+>
+<!ATTLIST deflist space 	(compact
+					|nocompact)		"compact" 
+		      headhi  	CDATA  		"2"
+		      termhi   	CDATA  		"2" 
+		      termsize	(narrow
+					|small
+					|normal
+					|wide)		"normal"    
+		      change 	%yesorno; 		#IMPLIED >
+
+<!ELEMENT term    (#PCDATA|%chardat;)* >
+
+<!ELEMENT def     (#PCDATA|%chardat;|%refdat;)* >
+<!ATTLIST def     change 	%yesorno;		#IMPLIED >
+
+<!ELEMENT symbol  EMPTY>
+<!ATTLIST symbol  name		 ENTITY		#REQUIRED
+			width        CDATA		#IMPLIED
+			height       CDATA           	#IMPLIED 
+			impsize      CDATA           	#IMPLIED
+			resolution   CDATA           	#IMPLIED
+			notation	CDATA		#IMPLIED
+			%refs; >
+
+<!ELEMENT br      EMPTY > <!-- Force line break -->
+
+<!ELEMENT emph    (#PCDATA|%chardat;|%refdat;)* >
+<!ATTLIST emph    %etype;
+		      change	%yesorno;		 #IMPLIED > 
+		    
+<!ELEMENT sub     (#PCDATA|phrasereference|saecodereference|dtcreference|ftbreference|ntreference)* >
+<!ELEMENT super   (#PCDATA|phrasereference|saecodereference|dtcreference|ftbreference|ntreference)* >
+
+<!ELEMENT ftnote  (#PCDATA|%chardat;|%refdat;)*>
+<!ATTLIST ftnote  %refs; >
+
+<!ELEMENT tftnote (#PCDATA|%chardat;|%refdat;)* >
+<!ATTLIST tftnote %refs; >
+
+<!ELEMENT ftnoteref EMPTY >
+<!ATTLIST ftnoteref refid	IDREFS		#REQUIRED
+                   %refs; >
+
+<!ELEMENT intxref  EMPTY >
+<!ATTLIST intxref  refid 	CDATA			#REQUIRED    
+		       %refs; >
+
+<!ELEMENT extxref	(#PCDATA) >                                   <!-- Reference to external servinfo -->
+<!ATTLIST extxref  doc     CDATA			#IMPLIED        
+			 from    CDATA          	#IMPLIED        
+			 to      CDATA           #IMPLIED >
+                         <!-- to: ID for end of reference target if target has more than one element --> 
+
+<!ELEMENT loxref	(#PCDATA) >                                   <!-- Reference to learning object -->
+<!ATTLIST loxref  doc     CDATA			#IMPLIED>
+
+<!ELEMENT toolref (#PCDATA) >                               <!-- Reference to external tool servinfo -->
+<!ATTLIST toolref refid		IDREF			#IMPLIED
+		      %refs; >
+
+<!ELEMENT specequip (#PCDATA|%chardat;|%refdat;)* > 		            <!-- Reference to specialequipment -->
+<!ATTLIST specequip refid	ENTITY  		#IMPLIED
+		     	%refs; >
+
+<!ELEMENT table   (title?, tgroup+) >
+<!ATTLIST table   shortentry	%yesorno;		#IMPLIED  
+		      frame		( top
+			      	| bottom
+			     		| topbot
+			     		| all
+			     		| sides
+			      	| none)  	 	#IMPLIED  
+		     colsep    CDATA      #IMPLIED  
+		     rowsep    CDATA      #IMPLIED  
+		     pgwide    CDATA      #IMPLIED  
+		     change    CDATA      #IMPLIED  
+		     %refs;    >
+<!ELEMENT tgroup		(colspec*, spanspec*, thead?, tbody)>
+<!ATTLIST tgroup 		cols      CDATA  	    	#REQUIRED 
+		     		colsep    CDATA  		#IMPLIED  
+		     		rowsep    CDATA     	#IMPLIED  
+		     		align     	( left
+			   		   	| right
+			      		| center
+			      		| justify
+			     			| char )	"left"      
+		     		charoff   CDATA  		"50"        
+		    		char      CDATA		"" 
+		     		tgroupstyle	( lines
+                             		| linesfigtext
+                             		| linestitle
+						| linessmallfont
+                              	| nolines
+                              	| nolinesfigtext
+                              	| nolinestitle
+                              	| display
+                              	| sbhead
+				| iihead
+				| sphead
+				| adihead
+				| msmhead
+				| dihead) "lines"  
+		     				%refs;  >
+
+<!ELEMENT colspec 	EMPTY >
+<!ATTLIST colspec 	colnum   CDATA  		#IMPLIED  
+		    		colname   NMTOKEN		#IMPLIED  
+		     		align	( left
+			      	| right
+			      	| center
+			      	| justify
+			      	| char )		#IMPLIED  
+		     		charoff   CDATA     	#IMPLIED  
+		     		char      CDATA     	#IMPLIED  
+		     		colwidth  CDATA     	#IMPLIED  
+		     		colsep    CDATA      	#IMPLIED  
+		     		rowsep    CDATA      	#IMPLIED  >
+
+<!ELEMENT spanspec 	EMPTY>
+<!ATTLIST spanspec	namest	NMTOKEN	#REQUIRED 
+		    		nameend	NMTOKEN	#REQUIRED 
+		     		spanname	NMTOKEN	#REQUIRED 
+		    		align		( left
+				      	| right
+			      		| center
+			       		| justify
+			    		   	| char )	"center"    
+			      charoff	CDATA  	#IMPLIED  
+			      char  		CDATA		#IMPLIED  
+				colsep  	CDATA   	#IMPLIED  
+		   		rowsep    	CDATA  	#IMPLIED  >
+
+<!ELEMENT thead  		(colspec*, row+)  >
+<!ATTLIST thead 		 valign	( top 
+			      		| middle
+			     			| bottom)	"bottom" >
+
+<!ELEMENT tbody		(row+)>
+<!ATTLIST tbody  		 valign 	( top 
+			      	 	| middle
+			       		| bottom) 	"top"  >
+
+<!ELEMENT row  		  (entry+) >
+<!ATTLIST row  		  rowsep		CDATA  	#IMPLIED  
+		    		  change		CDATA  	#IMPLIED  >
+
+<!ELEMENT entry  		(title?,(%head;
+		    	      |(subtitle|para|ptxt|reftxt|deflist|list|%admonition;|symbol|graphic|figure|tftnote))*) >
+
+<!ATTLIST entry  		colname	NMTOKEN   #IMPLIED  
+		     		namest    	NMTOKEN   #IMPLIED  
+		     		nameend   	NMTOKEN   #IMPLIED  
+		     		spanname  	NMTOKEN   #IMPLIED  
+		    		morerows  	CDATA      "0"         
+		     		colsep    	CDATA      #IMPLIED  
+		     		rowsep    	CDATA      #IMPLIED  
+		     		rotate    	CDATA      "0"         
+				valign    	( top 
+				       	| middle
+				      	| bottom) #IMPLIED  
+			      align     	( left
+			      		| right
+			    		   	| center
+			    		  	| justify
+			   		    	| char )  #IMPLIED  
+		    		charoff   	CDATA     #IMPLIED  
+		     		char     	CDATA     #IMPLIED  
+		     		change    	CDATA     #IMPLIED
+		     		%refs;    >
+
+
+<!ELEMENT servinforef	EMPTY >
+<!ATTLIST servinforef	refid		IDREF	#REQUIRED
+				%refs; >
+
+<!ELEMENT servinfosubref EMPTY >
+<!ATTLIST servinfosubref refid	IDREF	#REQUIRED
+				%refs; >
+<!ELEMENT topicref	EMPTY >
+<!ATTLIST topicref	refid		IDREF	#REQUIRED
+				%refs; >
+
+<!ELEMENT figureref	EMPTY >
+<!ATTLIST figureref	refid		IDREF	#REQUIRED
+				%refs; >
+
+<!ELEMENT procedureref	EMPTY >
+<!ATTLIST procedureref	refid		IDREF	#REQUIRED
+				%refs; >
+
+<!ELEMENT tableref    	EMPTY >
+<!ATTLIST tableref 	refid		IDREF	#REQUIRED
+				%refs; >
+
+				 
+<!-- Layout elements -->
+<!ELEMENT pagebreak    	EMPTY >
+<!ELEMENT startleft    	EMPTY >
+
+
+
+<!-- Bulletin head elements-->
+<!ELEMENT distarea  		(#PCDATA) >
+<!ELEMENT product  		(#PCDATA) > 
+<!ELEMENT fugrp   		(#PCDATA) > 
+<!ELEMENT revisno  		(#PCDATA) > 
+<!ELEMENT bltnyr   		(#PCDATA) > 
+<!ELEMENT bltnno			(#PCDATA) >
+<!ELEMENT bltnmo			(#PCDATA) >
+<!ELEMENT models  		(#PCDATA) >
+<!ELEMENT products  		(#PCDATA) >
+<!ELEMENT regard  		(models? | products?) >
+<!ATTLIST regard
+		type		CDATA  	#IMPLIED >
+
+<!ELEMENT supersedes		(#PCDATA) >
+<!ELEMENT kitno			(#PCDATA) >
+<!ELEMENT date			(#PCDATA) >
+<!ELEMENT refno			(#PCDATA) >
+<!ELEMENT dept 			(#PCDATA) >
+<!ELEMENT optionno		(#PCDATA) >
+<!ELEMENT issuer 			(#PCDATA) >
+<!ELEMENT time 			(#PCDATA) >
